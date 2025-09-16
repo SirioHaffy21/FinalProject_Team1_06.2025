@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.support.ui.*;
 
 public class CommonBase {
-	protected static WebDriver driver;
+	public static WebDriver driver;
 	protected int initWaitTime = 30;
 	protected static WebDriverWait wait;
 
@@ -187,6 +187,11 @@ public class CommonBase {
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		return driver.findElement(locator);
 	}
+	public WebElement getElementPresentDOM2(By locator, int timeoutSeconds) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+		wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		return driver.findElement(locator);
+	}
 
 	/**
 	 * pause driver in timeInMillis
@@ -223,11 +228,19 @@ public class CommonBase {
 		}
 	}
 
-	private WebDriver initChromeDriver() {
+	protected WebDriver initChromeDriver() {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(initWaitTime));
+		return driver;
+	}
+	public WebDriver initChromeDriver(String Url){
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.get(Url);
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
+		driver.manage().window().maximize();
 		return driver;
 	}
 
