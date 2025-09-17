@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-16T22:40:32 GMT+07:00" name="Default suite" finished-at="2025-09-16T22:40:40 GMT+07:00" duration-ms="8290">
+  <suite started-at="2025-09-17T23:28:55 GMT+07:00" name="Default suite" finished-at="2025-09-17T23:29:02 GMT+07:00" duration-ms="6453">
     <groups>
     </groups>
-    <test started-at="2025-09-16T22:40:32 GMT+07:00" name="Default test" finished-at="2025-09-16T22:40:40 GMT+07:00" duration-ms="8290">
+    <test started-at="2025-09-17T23:28:55 GMT+07:00" name="Default test" finished-at="2025-09-17T23:29:02 GMT+07:00" duration-ms="6453">
       <class name="automation.testsuite.MayRuaChenBat_Test">
-        <test-method is-config="true" signature="initBrowser(java.lang.String)[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@710f4dc7]" started-at="2025-09-16T22:40:32 GMT+07:00" name="initBrowser" finished-at="2025-09-16T22:40:39 GMT+07:00" duration-ms="7291" status="PASS">
+        <test-method is-config="true" signature="initBrowser(java.lang.String)[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@8297b3a]" started-at="2025-09-17T23:28:55 GMT+07:00" name="initBrowser" finished-at="2025-09-17T23:29:01 GMT+07:00" duration-ms="5899" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[edge]]>
+                <![CDATA[chrome]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initBrowser -->
-        <test-method signature="searchByBranch()[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@710f4dc7]" started-at="2025-09-16T22:40:39 GMT+07:00" name="searchByBranch" finished-at="2025-09-16T22:40:39 GMT+07:00" duration-ms="190" status="PASS">
+        <test-method signature="searchByBranch()[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@8297b3a]" started-at="2025-09-17T23:29:01 GMT+07:00" name="searchByBranch" finished-at="2025-09-17T23:29:01 GMT+07:00" duration-ms="116" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchByBranch -->
-        <test-method is-config="true" signature="endBrowser()[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@710f4dc7]" started-at="2025-09-16T22:40:39 GMT+07:00" name="endBrowser" finished-at="2025-09-16T22:40:40 GMT+07:00" duration-ms="702" status="PASS">
+        <test-method is-config="true" signature="endBrowser()[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@8297b3a]" started-at="2025-09-17T23:29:01 GMT+07:00" name="endBrowser" finished-at="2025-09-17T23:29:02 GMT+07:00" duration-ms="383" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endBrowser -->
