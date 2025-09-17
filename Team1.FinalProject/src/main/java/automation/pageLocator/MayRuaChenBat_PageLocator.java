@@ -19,7 +19,6 @@ public class MayRuaChenBat_PageLocator extends CommonBase {
 	private By maxPriceFilter = By.xpath("//a[text()='Giá cao']");
 	private By productSelect = By.xpath("//a[contains(@href, 'sms63l08ea')]");
 	private By breadcrumb = By.xpath("//span[contains(text(), 'SMS63L08EA') and contains(@class, 'breadcrumb')]");
-	private By productList = By.xpath("//div[contains(@class, 'product-list')]//a[contains(@href, 'bosch')]");
 	
 	public MayRuaChenBat_PageLocator(WebDriver driver) {
 		this.driver = driver;
@@ -66,6 +65,6 @@ public class MayRuaChenBat_PageLocator extends CommonBase {
 	}
 	
 	public boolean isDisplayedDetails() {
-		return !isElementDisplayed(breadcrumb);
+		return isElementDisplayed(breadcrumb);
 	}
 }
