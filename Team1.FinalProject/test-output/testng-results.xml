@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="7" total="8" passed="1" failed="0" skipped="0">
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-17T23:28:55 GMT+07:00" name="Default suite" finished-at="2025-09-17T23:29:02 GMT+07:00" duration-ms="6453">
+  <suite started-at="2025-09-18T22:19:10 GMT+07:00" name="Default suite" finished-at="2025-09-18T22:19:25 GMT+07:00" duration-ms="14933">
     <groups>
     </groups>
-    <test started-at="2025-09-17T23:28:55 GMT+07:00" name="Default test" finished-at="2025-09-17T23:29:02 GMT+07:00" duration-ms="6453">
-      <class name="automation.testsuite.MayRuaChenBat_Test">
-        <test-method is-config="true" signature="initBrowser(java.lang.String)[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@8297b3a]" started-at="2025-09-17T23:28:55 GMT+07:00" name="initBrowser" finished-at="2025-09-17T23:29:01 GMT+07:00" duration-ms="5899" status="PASS">
+    <test started-at="2025-09-18T22:19:10 GMT+07:00" name="Default test" finished-at="2025-09-18T22:19:25 GMT+07:00" duration-ms="14933">
+      <class name="automation.testsuite.MayRuaChenBatCheckout_Tests">
+        <test-method is-config="true" signature="initProcess(java.lang.String)[pri:0, instance:automation.testsuite.MayRuaChenBatCheckout_Tests@6f4a47c7]" started-at="2025-09-18T22:19:10 GMT+07:00" name="initProcess" finished-at="2025-09-18T22:19:23 GMT+07:00" duration-ms="13588" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -17,16 +17,16 @@
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- initBrowser -->
-        <test-method signature="searchByBranch()[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@8297b3a]" started-at="2025-09-17T23:29:01 GMT+07:00" name="searchByBranch" finished-at="2025-09-17T23:29:01 GMT+07:00" duration-ms="116" status="PASS">
+        </test-method> <!-- initProcess -->
+        <test-method signature="payment_Failed_With_Empty_Phone()[pri:0, instance:automation.testsuite.MayRuaChenBatCheckout_Tests@6f4a47c7]" started-at="2025-09-18T22:19:23 GMT+07:00" name="payment_Failed_With_Empty_Phone" finished-at="2025-09-18T22:19:24 GMT+07:00" duration-ms="903" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- searchByBranch -->
-        <test-method is-config="true" signature="endBrowser()[pri:0, instance:automation.testsuite.MayRuaChenBat_Test@8297b3a]" started-at="2025-09-17T23:29:01 GMT+07:00" name="endBrowser" finished-at="2025-09-17T23:29:02 GMT+07:00" duration-ms="383" status="PASS">
+        </test-method> <!-- payment_Failed_With_Empty_Phone -->
+        <test-method is-config="true" signature="endProcess()[pri:0, instance:automation.testsuite.MayRuaChenBatCheckout_Tests@6f4a47c7]" started-at="2025-09-18T22:19:24 GMT+07:00" name="endProcess" finished-at="2025-09-18T22:19:25 GMT+07:00" duration-ms="389" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- endBrowser -->
-      </class> <!-- automation.testsuite.MayRuaChenBat_Test -->
+        </test-method> <!-- endProcess -->
+      </class> <!-- automation.testsuite.MayRuaChenBatCheckout_Tests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
