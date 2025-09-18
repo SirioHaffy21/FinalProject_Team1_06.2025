@@ -23,6 +23,8 @@ public class MayRuaChenBatDetails_PageLocator extends CommonBase{
 	private By phoneText_installmentModal = By.xpath("(//input[@placeholder='Nhập số điện thoại'])[2]");
 	private By addressText_installmentModal = By.xpath("(//input[@placeholder='Nhập địa chỉ'])[2]");
 	private By breadcrumb = By.xpath("//span[contains(text(), 'SMS63L08EA') and contains(@class, 'breadcrumb')]");
+	private By btnSurveyConsult = By.xpath("(//span[contains(text(), 'Nhận tư vấn')])[1]");
+	private By btnBuyInstallment = By.xpath("(//span[contains(text(), 'Nhận tư vấn')])[2]");
 	
 	public MayRuaChenBatDetails_PageLocator(WebDriver driver) {
 		this.driver = driver;
@@ -34,6 +36,10 @@ public class MayRuaChenBatDetails_PageLocator extends CommonBase{
 		clickByJS(survey);
 	}
 	
+	public void installments() {
+		clickByJS(installment);
+	}
+	
 	public void receiveConsult(String name, String phone, String address) {
 		clickByJS(survey);
 		WebElement modal = getElementPresentDOM(surveyModal);
@@ -43,9 +49,10 @@ public class MayRuaChenBatDetails_PageLocator extends CommonBase{
 		nameText.sendKeys(name);
 		phoneText.sendKeys(phone);
 		addressText.sendKeys(address);
+		clickByJS(btnSurveyConsult);
 	}
 	
-	public void buyinstallmentment(String name, String phone, String address) {
+	public void buyInstallment(String name, String phone, String address) {
 		clickByJS(installment);
 		WebElement modal = getElementPresentDOM(installmentModal);
 		WebElement nameText = modal.findElement(nameText_installmentModal);
@@ -54,6 +61,7 @@ public class MayRuaChenBatDetails_PageLocator extends CommonBase{
 		nameText.sendKeys(name);
 		phoneText.sendKeys(phone);
 		addressText.sendKeys(address);
+		clickByJS(btnBuyInstallment);
 	}
 	
 	public void buyNow() {
