@@ -1,13 +1,16 @@
 package automation.testsuite;
 import automation.common.CommonBase;
 import automation.constant.CT_PageURL;
+import automation.pageLocator.BepTu_Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,16 +20,27 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class BepTu_Test extends CommonBase {
+    BepTu_Page beptu;
     @BeforeMethod
     public void openBrowser(){
         driver = initChromeDriver(CT_PageURL.HaiHa_BepTu_URL);
+        beptu =new BepTu_Page(driver);
     }
     public void clickSeeMoreIfPresent() {
-        while (isElementDisplayed(By.xpath("//a[contains(@class,'btn-linear-orange') and span[contains(text(),'Xem thêm')]]"))){
-            clickByJS(By.xpath("//a[contains(@class,'btn-linear-orange') and span[contains(text(),'Xem thêm')]]"));
+        By btnXemThem = By.xpath("//a[contains(@class,'btn-linear-orange') and span[contains(text(),'Xem thêm')]]");
+        By productLocator = By.xpath("//div[contains(@class, 'product-list')]//a");
+
+        while (isElementDisplayed(btnXemThem)) {
+            // Đếm số sản phẩm hiện tại
+            int before = driver.findElements(productLocator).size();
+            clickByJS(btnXemThem);
+
+            // Chờ cho đến khi số sản phẩm > before (tức là đã load thêm)
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            wait.until(driver -> driver.findElements(productLocator).size() > before);
         }
     }
-    public List<WebElement> loadProducts(){
+    public List<WebElement> loadProducts() {
         getElementPresentDOM2(By.xpath("//div[contains(@class, 'product-list')]"),3);
         clickSeeMoreIfPresent();
         List<WebElement> products = driver.findElements(By.xpath("//div[contains(@class, 'product-list')]//a"));
@@ -34,24 +48,36 @@ public class BepTu_Test extends CommonBase {
         assertTrue(products.size()> 0, "Không có sản phẩm nào hiển thị sau khi lọc!");
         return products;
     }
-    @Test
-    public void locTheoGia3to5(){
+    public void checkPriceRange(String label, int minPrice, int maxPrice) {
         WebElement priceFilter = getElementPresentDOM2(By.xpath("//h3[text()='Mức giá']/" +
                 "following-sibling::div[contains(@class,'category-menus')]"),3);
-        clickByJS(By.xpath("//span[contains(text(), '3.000.000 > 5.000.000')]"));
+        clickByJS(By.xpath("//span[contains(text(), '" + label + "')]"));
         List<WebElement> products = loadProducts();
         for (WebElement product : products) {
             try {
                 String priceText = product.findElement(By.xpath("//span[contains(@class,'sale-price')]")).getText();
                 String digits = priceText.replaceAll("[^0-9]", "");
                 int price = Integer.parseInt(digits);
-                // Assert nằm trong khoảng 3 - 5 triệu
-                assertTrue(price >= 3000000 && price <= 5000000,
-                        "Sản phẩm không có giá trong khoảng 3-5 triệu: " + priceText);
+                // Xử lý 3 trường hợp: "<", ">", "khoảng"
+                if (maxPrice == -1) {
+                    assertTrue(price > minPrice, "Sai giá SP: " + priceText);
+                } else if (minPrice == -1) {
+                    assertTrue(price < maxPrice, "Sai giá: " + priceText);
+                } else {
+                    assertTrue(price >= minPrice && price <= maxPrice, "Sai giá: " + priceText);
+                }
             } catch (Exception e) {
                 System.out.println("Không lấy được giá sản phẩm.");
             }
         }
+    }
+    @Test
+    public void locTheoGia3to5(){
+        checkPriceRange("3.000.000 > 5.000.000", 3000000, 5000000);
+    }
+    @Test
+    public void locTheoGiaBeHon3tr(){
+        checkPriceRange("< 3.000.000", -1, 3000000);
     }
     @Test
     public void locTheoHangSX() throws InterruptedException {
@@ -93,11 +119,9 @@ public class BepTu_Test extends CommonBase {
         }
     }
 
-    //case failed vi noi dung hien thi khong dong nhat trong cacs trang detail nen assert k the chinh xac
+    //case failed vi noi dung hien thi khong dong nhat trong cac trang detail nen assert k the chinh xac
     @Test
     public void filterBySoBep() throws InterruptedException {
-
-        // Click filter theo số bếp
         scrollToElement(By.xpath("//h3[text()='Số bếp']"));
         clickByJS(By.xpath("(//a[contains(@class,'text-gold-100 text-sm see-more mt')]//span[text()='Xem thêm'])[3]"));
         click(By.id("5-bep-1013"));
@@ -129,14 +153,12 @@ public class BepTu_Test extends CommonBase {
     public void locTheoPhanLoai(){
         scrollToElement(By.xpath("//h3[text()='Phân loại']"));
         click(By.id("bep-dien-tu-1011"));
-        getElementPresentDOM2(By.xpath("//div[contains(@class, 'product-list')]"),3);
-        List<WebElement> products = driver.findElements(By.xpath("//div[contains(@class, 'product-list')]/a"));
-        System.out.println("Số sản phẩm hiển thị khi lọc: " + products.size());
+        List<WebElement> products = loadProducts();
         assertTrue(products.size()> 0, "Không có sản phẩm nào hiển thị sau khi lọc!");
         for (WebElement product : products) {
             String productText = product.getText().toLowerCase();
             assertTrue(productText.contains("điện từ"),
-                    "Sản phẩm không thuộc hãng: " + productText);
+                    "Sản phẩm không đúng theo phân loại: " + productText);
         }
     }
 
@@ -174,8 +196,40 @@ public class BepTu_Test extends CommonBase {
         }
         List<Integer> sortedPrices = new ArrayList<>(actualPrices);
         sortedPrices.sort(Collections.reverseOrder());
-
         assertEquals(actualPrices, sortedPrices);
+    }
+    @Test
+    public void locTheoGiamgiaNhieu(){
+        click(By.xpath("//a[text()='Giảm giá nhiều']"));
+        List<WebElement> products = loadProducts();
+        boolean dieuKien = true;
+        for (WebElement product : products) {
+            boolean coTagDiscount = !product.findElements(By.xpath("//div[contains(@class,'absolute top-0 right-0')]/div[contains(text(),'%')]")).isEmpty();
+            boolean khongCoGia = product.findElements(By.xpath("//span[contains(@class,'sale-price')]")).isEmpty();
+            if (!(coTagDiscount || khongCoGia)){
+                dieuKien = false;
+            }
+        }
+        assertTrue(dieuKien);
+    }
+    @Test
+    public void locTheoGiaVaHangSX() throws InterruptedException {
+        locTheoHangSX();
+        checkPriceRange("5.000.000 > 10.000.000", 5000000, 10000000);
+    }
+    @Test
+    public void checkOutFailed(){
+        WebElement priceFilter = getElementPresentDOM2(By.xpath("//h3[text()='Mức giá']/" +
+                "following-sibling::div[contains(@class,'category-menus')]"),3);
+        beptu.order("tesst", "456 HHT");
+        assertTrue(isElementDisplayed(By.xpath("//small[contains(text(),'Số điện thoại không hợp lệ')]")));
+    }
+    @Test
+    public void MuaTraGop(){
+        beptu.traGop();
+        assertTrue(isElementDisplayed(By.xpath("(//small[contains(text(),'Họ và tên không hợp lệ')])[2]")));
+        assertTrue(isElementDisplayed(By.xpath("(//small[contains(text(),'Số điện thoại không hợp lệ')])[2]")));
+        assertTrue(isElementDisplayed(By.xpath("(//small[contains(text(),'Địa chỉ không hợp lệ')])[2]")));
     }
 
     @AfterMethod
