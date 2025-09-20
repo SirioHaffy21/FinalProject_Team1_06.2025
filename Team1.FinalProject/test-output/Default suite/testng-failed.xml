@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="automation.testsuite.MayRuaChenBatDetails_Test">
+      <class name="automation.testsuite.MayRuaChenBat_Test">
         <methods>
-          <include name="endProcess"/>
-          <include name="buyInstallment_Failed_With_Empty_Name"/>
-          <include name="initProcess"/>
+          <include name="initBrowser"/>
+          <include name="endBrowser"/>
+          <include name="searchByBranchAndOriginAndQuantity_checklist"/>
         </methods>
-      </class> <!-- automation.testsuite.MayRuaChenBatDetails_Test -->
+      </class> <!-- automation.testsuite.MayRuaChenBat_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
