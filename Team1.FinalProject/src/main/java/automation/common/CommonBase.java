@@ -1,6 +1,7 @@
 package automation.common;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
@@ -181,6 +182,12 @@ public class CommonBase {
 		WebElement element = getElementPresentDOM(locator);
 		return element.getText();
 	}
+	
+	public List<WebElement> getListElementDOM(By locator){
+		wait = new WebDriverWait(driver, Duration.ofSeconds(initWaitTime));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		return driver.findElements(locator); 
+	}
 
 	public WebElement getElementPresentDOM(By locator) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(initWaitTime));
@@ -225,7 +232,9 @@ public class CommonBase {
 
 	private WebDriver initChromeDriver() {
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\driver\\chromedriver.exe");
-		driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // chạy ngầm
+		driver = new ChromeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(initWaitTime));
 		return driver;
@@ -233,7 +242,9 @@ public class CommonBase {
 
 	private WebDriver initFireFoxDriver() {
 		System.setProperty("webdriver.firefox.driver", System.getProperty("user.dir") + "\\driver\\geckodriver.exe");
-		driver = new FirefoxDriver();
+		FirefoxOptions options = new FirefoxOptions();
+        options.addArguments("-headless"); // chạy ngầm
+		driver = new FirefoxDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(initWaitTime));
 		return driver;
@@ -241,7 +252,9 @@ public class CommonBase {
 
 	private WebDriver initMSEdgeDriver() {
 		System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\driver\\msedgedriver.exe");
-		driver = new EdgeDriver();
+		EdgeOptions options = new EdgeOptions();
+        options.addArguments("--headless"); // chạy ngầm
+		driver = new EdgeDriver(options);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(initWaitTime));
 		return driver;
