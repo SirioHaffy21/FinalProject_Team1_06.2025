@@ -20,7 +20,7 @@ public class MayRuaChenBatDetails_Test extends CommonBase{
 	
 	@BeforeMethod
 	@Parameters("browser")
-	public void initProcess(@Optional("chrome") String browser) {
+	public void initProcess(String browser) {
 		setupDriver(browser);
 		driver.get(CT_PageURL.SyHa_MayRuaChen_URL);
 		mayruachen = new MayRuaChenBat_PageLocator(driver);

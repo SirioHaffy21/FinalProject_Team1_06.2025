@@ -19,7 +19,7 @@ public class MayRuaChenBat_PageLocator extends CommonBase {
 	private By maxPriceFilter = By.xpath("//a[text()='Giá cao']");
 	private By productSelect = By.xpath("//a[contains(@href, 'sms63l08ea')]");
 	private By breadcrumb = By.xpath("//span[contains(text(), 'SMS63L08EA') and contains(@class, 'breadcrumb')]");
-	
+
 	public MayRuaChenBat_PageLocator(WebDriver driver) {
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -32,7 +32,13 @@ public class MayRuaChenBat_PageLocator extends CommonBase {
 	}
 
 	public void searchByPrice(String keyword) {
-		By priceOption = By.xpath("//span[contains(text(), '" + keyword + "')]");
+
+		By priceOption;
+		if (keyword == "> 15.000.000") {
+			priceOption = By.xpath("(//span[contains(text(), '" + keyword + "')])[2]");
+		} else {
+			priceOption = By.xpath("//span[contains(text(), '" + keyword + "')]");
+		}
 		clickByJS(priceOption);
 	}
 
@@ -63,7 +69,7 @@ public class MayRuaChenBat_PageLocator extends CommonBase {
 	public void viewDetailProduct() {
 		clickByJS(productSelect);
 	}
-	
+
 	public boolean isDisplayedDetails() {
 		return isElementDisplayed(breadcrumb);
 	}
