@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [TestSuite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Regression Test on Egde(failed)">
-    <parameter name="browser" value="edge"/>
+  <test thread-count="5" name="Regression Test on Chrome(failed)">
+    <parameter name="browser" value="chrome"/>
     <classes>
       <class name="automation.testsuite.MayRuaChenBat_Test">
         <methods>
           <include name="initBrowser"/>
           <include name="endBrowser"/>
-          <include name="searchByBranchAndPrice_checklist"/>
-          <include name="searchByBranchAndQuantity_checklist"/>
+          <include name="searchByPriceAndOrigin_checklist"/>
         </methods>
       </class> <!-- automation.testsuite.MayRuaChenBat_Test -->
     </classes>
-  </test> <!-- Regression Test on Egde(failed) -->
+  </test> <!-- Regression Test on Chrome(failed) -->
   <test thread-count="5" name="Regression Test on Firefox(failed)">
     <parameter name="browser" value="firefox"/>
     <classes>
       <class name="automation.testsuite.MayRuaChenBat_Test">
         <methods>
           <include name="initBrowser"/>
+          <include name="searchByPrice_checkItemInList"/>
           <include name="endBrowser"/>
-          <include name="searchByQuantity_checkItemInList"/>
-          <include name="searchByOrigin_checkItemInList"/>
-          <include name="searchByBranchAndOrigin_checklist"/>
         </methods>
       </class> <!-- automation.testsuite.MayRuaChenBat_Test -->
     </classes>

@@ -30,7 +30,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 	@Test
 	public void searchByBranch_checkItemInList() {
 		mayruachen.searchByBranch(keyword);
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		pause(3000);
 		@SuppressWarnings("unchecked")
 		// div[contains(@class, 'product-list')]//a[contains(@href, 'bosch')]
 		List<WebElement> resultsSearchBranch = getListElementDOM(
@@ -53,7 +53,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 	@Test
 	public void searchByOrigin_checkItemInList() {
 		mayruachen.searchByOrigin(origin);
-		// pause(5000);
+		pause(3000);
 		clickByJS(By.xpath("//a[contains(@href, 'bosch-sms6zci42e')]"));
 		pause(3000);
 		WebElement resultcheck = driver
@@ -65,6 +65,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 	@Test
 	public void searchByQuantity_checkItemInList() {
 		mayruachen.searchByQuantity(quantity);
+		pause(3000);
 		clickByJS(By.xpath("//a[contains(@href, 'bosch-sps4emi60e')]"));
 		pause(3000);
 		By xemThemBtn = By.xpath("(//span[text()='Xem thêm nội dung'])[1]");
@@ -87,7 +88,6 @@ public class MayRuaChenBat_Test extends CommonBase {
 		mayruachen.searchByPrice(price);
 		pause(3000);
 		@SuppressWarnings("unchecked")
-		// div[contains(@class, 'product-list')]//a[contains(@href, 'bosch')]
 		List<WebElement> resultsSearchBranch = getListElementDOM(
 				By.xpath("//div[contains(@class, 'product-list')]//a[contains(@href, '" + keyword + "')]"));
 		assertTrue(resultsSearchBranch.size() > 0);
@@ -125,6 +125,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 	public void searchByBranchAndQuantity_checklist() {
 		mayruachen.searchByBranch(keyword);
 		mayruachen.searchByQuantity(quantity);
+		pause(3000);
 		@SuppressWarnings("unchecked")
 		// div[contains(@class, 'product-list')]//a[contains(@href, 'bosch')]
 		List<WebElement> resultsSearchBranch = getListElementDOM(
@@ -151,11 +152,13 @@ public class MayRuaChenBat_Test extends CommonBase {
 	public void searchByPriceAndOrigin_checklist() {
 		mayruachen.searchByPrice(price);
 		mayruachen.searchByOrigin(origin);
+		pause(3000);
 
 		List<WebElement> resultSearchPrice = getListElementDOM(
 				By.xpath("//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')]"));
 		int count = 1;
 		for (WebElement webElement : resultSearchPrice) {
+			System.out.println("Element number " + count);
 			String text = getText(By.xpath(
 					"(//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')])[" + count + "]"))
 					.replace("đ", "").replace(".", "").replace(" ", "").replace("₫", "");
@@ -174,11 +177,13 @@ public class MayRuaChenBat_Test extends CommonBase {
 	public void searchByPriceAndQuantity_checklist() {
 		mayruachen.searchByPrice(price);
 		mayruachen.searchByQuantity(quantity);
+		pause(3000);
 
 		List<WebElement> resultSearchPrice = getListElementDOM(
 				By.xpath("//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')]"));
 		int count = 1;
 		for (WebElement webElement : resultSearchPrice) {
+			System.out.println("Element number " + count);
 			String text = getText(By.xpath(
 					"(//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')])[" + count + "]"))
 					.replace("đ", "").replace(".", "").replace(" ", "").replace("₫", "");
@@ -244,6 +249,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 				By.xpath("//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')]"));
 		int count = 1;
 		for (WebElement webElement : resultSearchPrice) {
+			System.out.println("Element number " + count);
 			String text = getText(By.xpath(
 					"(//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')])[" + count + "]"))
 					.replace("đ", "").replace(".", "").replace(" ", "").replace("₫", "");
@@ -309,6 +315,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 				By.xpath("//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')]"));
 		int count = 1;
 		for (WebElement webElement : resultSearchPrice) {
+			System.out.println("Element number " + count);
 			String text = getText(By.xpath(
 					"(//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')])[" + count + "]"))
 					.replace("đ", "").replace(".", "").replace(" ", "").replace("₫", "");
@@ -343,6 +350,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 				By.xpath("//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')]"));
 		int count = 1;
 		for (WebElement webElement : resultSearchPrice) {
+			System.out.println("Element number " + count);
 			String text = getText(By.xpath(
 					"(//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')])[" + count + "]"))
 					.replace("đ", "").replace(".", "").replace(" ", "").replace("₫", "");
@@ -389,6 +397,7 @@ public class MayRuaChenBat_Test extends CommonBase {
 				By.xpath("//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')]"));
 		int count = 1;
 		for (WebElement webElement : resultSearchPrice) {
+			System.out.println("Element number " + count);
 			String text = getText(By.xpath(
 					"(//div[contains(@class, 'product-list')]//span[contains(@class, 'sale-price')])[" + count + "]"))
 					.replace("đ", "").replace(".", "").replace(" ", "").replace("₫", "");
