@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.*;
 
 public class CommonBase {
 	protected static WebDriver driver;
-	protected int initWaitTime = 30;
+	protected int initWaitTime = 1100;
 	protected static WebDriverWait wait;
 
 	/**
