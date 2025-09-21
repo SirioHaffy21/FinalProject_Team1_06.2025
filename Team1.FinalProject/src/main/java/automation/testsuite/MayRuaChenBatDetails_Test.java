@@ -106,6 +106,16 @@ public class MayRuaChenBatDetails_Test extends CommonBase{
 		assertTrue(failedBuyInstallment.isDisplayed());
 	}
 	
+	@Test
+	public void buyNow_checkElement() {
+		mayruachen_detail.buyNow();
+		pause(3000);
+		By checkBuyNow = By.xpath("//h1[contains(text(), 'Đặt hàng')]");
+		By payment = By.xpath("//span[contains(text(), 'Thanh toán')]");
+		assertTrue(isElementDisplayed(checkBuyNow) && isElementDisplayed(payment));
+		assertTrue(isElementEnabled(payment));
+	}
+	
 	@AfterMethod
 	public void endProcess() {
 		closeDriver();

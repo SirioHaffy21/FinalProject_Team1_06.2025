@@ -7,7 +7,7 @@
         <methods>
           <include name="initBrowser"/>
           <include name="endBrowser"/>
-          <include name="searchByBranchAndOriginAndQuantity_checklist"/>
+          <include name="searchByOrigin_checkItemInList"/>
         </methods>
       </class> <!-- automation.testsuite.MayRuaChenBat_Test -->
     </classes>
