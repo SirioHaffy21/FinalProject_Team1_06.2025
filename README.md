@@ -155,5 +155,5 @@ XEPO gồm **9 module chính**, mỗi module phục vụ một nhóm nhu cầu r
 ### a, Bảng danh sách quản lý CV:
 
 <p align="center">
-    <img src="https://flagsireland.com/cdn/shop/files/Manchester_United_Football_Club_Flag.png?v=1720184212" width="500" alt="UI CV Management"/>
+    <img src="https://flagsireland.com/cdn/shop/files/Manchester_United_Football_Club_Flag.png?v=1720184212" width="800" alt="UI CV Management"/>
 </p>
