@@ -154,17 +154,6 @@ XEPO gồm **9 module chính**, mỗi module phục vụ một nhóm nhu cầu r
 
 ### a, Bảng danh sách quản lý CV:
 
----
-
-Bảng danh sách CV gồm có 6 cột.
-
-| Field data | Nội dung |
-| ---------- | -------- |
-| Ứng viên   | - **Ảnh đại diện** (nếu có, mặc định avatar mặc định nếu không) <br> - **Tên ứng viên** <br> - **Trạng thái**: Đã xem / Chưa xem |
-| Chiến dịch | - **Tên chiến dịch tuyển dụng của doanh nghiệp đó** mà CV ứng tuyển <br> - **Khi click chiến dịch**, màn hình sẽ **hiển thị trang thông tin** chiến dịch |
-| Thông tin liên hệ | - Gồm có **email và số điện thoại**. <br> - **Mặc định thông tin liên hệ** của ứng viên **sẽ ẩn** (Hidden), nếu như doanh nghiệp(DN) vào xem <br> - Thông tin liên hệ (email, SĐT) **chỉ hiển thị khi**: <br> - Ứng viên nộp CV trực tiếp cho DN → mapping với JD ứng tuyển → hiển thị. <br> - Hệ thống gợi ý CV mapping → DN chủ động lưu CV vào JD ứng tuyển → hiển thị. |
-| Insights   | - **Thời gian ứng tuyển** (dd/MM/yyyy hh:mm) <br> - Tin ứng tuyển (mapping với CV) |
-| Labels     | - Hiển thị các Labels đã gán cho CV. |
-| Actions    | Chứa 2 chức năng "Xem CV", "Tải về" |
-
----
+<p align="center">
+    <img src="https://flagsireland.com/cdn/shop/files/Manchester_United_Football_Club_Flag.png?v=1720184212" width="500" alt="UI CV Management"/>
+</p>
