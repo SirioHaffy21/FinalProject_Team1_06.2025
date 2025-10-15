@@ -154,6 +154,8 @@ XEPO gồm **9 module chính**, mỗi module phục vụ một nhóm nhu cầu r
 
 ### a, Bảng danh sách quản lý CV:
 
-<p align="center">
-    <img src="https://flagsireland.com/cdn/shop/files/Manchester_United_Football_Club_Flag.png?v=1720184212" width="800" alt="UI CV Management"/>
-</p>
+| Lọc dữ liệu              |                                                                                                                              |
+|--------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Tìm kiếm theo tên, email, số điện thoại | - Tìm bằng searchbox <br> - Khi nhập searchbox, hiển thị danh sách CV của ứng viên có tên, số điện thoại, email có chứa ký tự nhập <br> - Nếu tìm kiếm không hiển thị => hiển thị danh sách trống |
+| Lọc theo chiến dịch.     | - Tìm bằng dropdownlist, hiển thị các danh sách chiến dịch tuyển dụng của doanh nghiệp đó, sắp xếp theo thời gian tạo gần nhất <br> - Khi chọn 1 chiến dịch, sẽ hiển thị danh sách các CV trong chiến dịch tuyển dụng được chọn. <br> - Nếu tìm kiếm không hiển thị => hiển thị danh sách trống |
+| Lọc theo trạng thái xem  | Tìm bằng radio: <br> - Tất cả (Hiển thị danh sách tất cả CV phù hợp) (mặc định) <br> - Chưa xem (Hiển thị danh sách các CV phù hợp chưa xem) <br> - Nếu tìm kiếm không hiển thị => hiển thị danh sách trống |
